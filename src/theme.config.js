@@ -13,7 +13,7 @@ export default {
     link: 'https://discord.gg/hEM84NMkRv' // Next.js discord server,
   },
   docsRepositoryBase:
-    'https://github.com/shuding/nextra/blob/core/examples/docs',
+    'https://github.com/tecklens/wolfx.docs',
   editLink: {
     text: 'Edit this page on GitHub'
   },
