@@ -54,21 +54,21 @@ export default {
       ],
       additionalMetaTags: [
         { content: 'en', httpEquiv: 'Content-Language' },
-        { content: 'Nextra', name: 'apple-mobile-web-app-title' },
+        { content: 'WOLFX', name: 'apple-mobile-web-app-title' },
         { content: '#fff', name: 'msapplication-TileColor' },
         { content: '/ms-icon-144x144.png', name: 'msapplication-TileImage' }
       ],
       description:
-        frontMatter.description || 'Nextra: the Next.js site builder',
+        frontMatter.description || 'WOLFX: the Next.js site builder',
       openGraph: {
         images: [
-          { url: frontMatter.image || 'https://nextra.vercel.app/og.png' }
+          { url: frontMatter.image || 'https://docs.wolfx.app/og.png' }
         ]
       },
-      titleTemplate: '%s – Nextra',
+      titleTemplate: '%s – WOLFX',
       twitter: {
         cardType: 'summary_large_image',
-        site: 'https://nextra.vercel.app'
+        site: 'https://docs.wolfx.app'
       }
     }
   }
