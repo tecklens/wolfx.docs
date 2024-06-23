@@ -19,7 +19,7 @@ export default {
     editLink: {
         text: 'Edit this page on GitHub'
     },
-    faviconGlyph: '✦',
+    faviconGlyph: 'w',
     footer: {
         text: 'MIT 2024 © WOLFX.'
     },
