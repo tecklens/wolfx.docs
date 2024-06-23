@@ -65,7 +65,7 @@ export default {
                 {content: '/ms-icon-144x144.png', name: 'msapplication-TileImage'}
             ],
             description:
-                frontMatter.description || 'WOLFX: the Next.js site builder',
+                frontMatter.description || 'Wolf | Notifications infrastructure for developers',
             openGraph: {
                 images: [
                     {url: frontMatter.image || 'https://docs.wolfx.app/og.png'}
