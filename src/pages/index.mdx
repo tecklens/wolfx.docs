@@ -1,4 +1,4 @@
-import { Bleed } from 'nextra-theme-docs'
+import {Bleed} from 'nextra-theme-docs'
 
 # Introduction
 
@@ -9,12 +9,59 @@ It covers everything from setup to usage and development. It's a work in progres
 
 ## Where to start?
 
+Learn more about the functionality of WOLFX and how it supports notification flows in your products.
+
+It is a notification infrastructure that helps you deploy notifications that users love without the effort of building and maintaining a massive internal notification system.
+
+In this overview, we will cover some basic concepts of the system.
+This system is designed for each developer or product team: developers can easily and quickly deploy it for users with little technical knowledge using our intuitive dashboards.
+
+### Workflow
+Workflow is a core concept in our platform. They allow you to easily model complex message flows across providers using various functional logic steps. All notifications are sent by triggering workflows.
+
+Your application can trigger workflows by using the REST API or any of our available SDKs listed below:
+
+- NODEJS SDK
+- GO SDK
+- JAVA SDK
+
+### Targets
+'Target' is the user in your application. When you trigger a workflow to send a notification to the recipient, the system will cache the necessary data to notify the user on different platforms.
+
+### Provider
+Channels on WOLFX represent a specific notification provider that you have configured. You can configure them [here](https://dash.wolfx.app/provider).
+
+You can use multiple different providers within the same workflow.
+
+### Features
+Each workflow can combine multiple functional steps to model complex logic, creating a better customer notification experience. You can combine these functional steps with any channel to generate personalized notifications for your users:
+
+- **Delay**
+
+A delay step waits for a specified duration before proceeding to the next step in a workflow, e.g. send the new user a follow-up email ten days after they sign up.
+
+- **Conditional**
+
+A conditional step helps you effectively route your notification logic based on specific conditions.
+
+- **Email step**
+
+Integrate with email providers that you have configured.
+
+- **Sms Step**
+
+Integrate with sms providers that you have configured.
+
+- **Webhook**
+
+A webhook step can send an API to your specific system, helping you control your flow more effectively. We have predefined the API body (which may be updated in the future).
+
 ## About **Wolf**
-It supports Markdown and React components ([MDX](/features/mdx)), automatically
-generated [sidebar and anchor links](/get-started#sidebar-and-anchor-links),
-file-system based routing, built-in syntax highlighting, image optimization,
-custom layouts, i18n, and all the features you love about Next.js.
+Wolfx will help you connect any application with an API that we support. With little or no coding required.
 
 Here's what you will get in 1 minute:
 
-<Bleed>![Nextra Example](/images/preview-workflow.png)</Bleed>
+- Customizable: highly flexible workflows and the option to build custom nodes.
+- Privacy-focused: We ensure the privacy of your account and user data.
+
+<Bleed>![Workflow Example](/images/preview-workflow.png)</Bleed>

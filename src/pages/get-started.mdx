@@ -1,110 +1,51 @@
-import { Callout, Steps } from 'nextra/components'
+import {Callout, Steps} from 'nextra/components'
 
 # Get Started
 
-## Quick Start with Vercel
+## Quick Start with Wolfx
+Quickly get up and running with Wolfx.
 
-You can start by creating your own WOLFX site and deploying to Vercel by
-clicking the link:
-
-[![](https://vercel.com/button)](https://vercel.com/new/clone?demo-description=Markdown%20powered%20docs%20site.%20Built%20with%20Next.js.&demo-image=https%3A%2F%2Fnextra.vercel.app%2Fdemo.png&demo-title=Documentation%20Starter%20Kit&demo-url=https%3A%2F%2Fnextra.vercel.app%2F&project-name=nextjs-docs&repository-name=nextjs-docs&s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra&from=templates)
-
-Vercel will create the WOLFX repository and deploy the site for you with just a
-few clicks. Once done, every change in the repository will be deployed
-automatically.
-
-## Create Manually
-
-WOLFX works like a Next.js plugin, and it accepts a theme config (layout) to
-render the page. To start: [^3]
+In this guide, you'll integrate Wolfx with your backend web application and send your first notification using Wolfx.
 
 <Steps>
-### Install Next.js, WOLFX and React [^1]
+    ### Create a Wolfx account [^1]
 
-```sh npm2yarn
-npm i react react-dom next nextra
-```
+    First, [**create a Wolfx account**](https://dash.wolfx.app/sign-in) if you don't already have one and log into the [**Wolfx dashboard**](https://dash.wolfx.app).
 
-### Install the docs theme [^2]
+    ### Create a workflow in Wolfx [^2]
 
-```sh npm2yarn
-npm i nextra-theme-docs
-```
+    Next we'll design our first workflow in Wolfx via the dashboard.
 
-### Create the following Next.js config and theme config under the root directory
+    A workflow encapsulates a notification in Wolfx. Each workflow takes a trigger call via the Wolfx API, runs the data you provide through a set of logic you configure, and outputs the actual messages that will be sent to your end users. All channel routing and message design takes place within the workflow.
 
-```js filename="next.config.js"
-const withNextra = require('nextra')({
-  theme: 'nextra-theme-blog',
-  themeConfig: './theme.config.js'
-  // optional: add `staticImage: true` to enable WOLFX's auto image import
-})
-module.exports = withNextra()
-```
+    Here's how to build your first workflow:
 
-### Create a `theme.config.js` file for the docs theme
+    - Create a Workflow
 
-```js filename="theme.config.js"
-/**
- * @type {import('nextra-theme-docs').DocsThemeConfig}
- */
-export default {
-  project: {
-    link: 'https://github.com/shuding/nextra' // GitHub link in the navbar
-  },
-  docsRepositoryBase: 'https://github.com/shuding/nextra/blob/master', // base URL for the docs repository
-  getNextSeoProps: () => ({ titleTemplate: '%s – WOLFX' }),
-  navigation: true,
-  darkMode: true,
-  footer: {
-    text: `MIT ${new Date().getFullYear()} © Shu Ding.`
-  },
-  editLink: {
-    text: 'Edit this page on GitHub'
-  },
-  logo: (
-    <>
-      <svg>...</svg>
-      <span>Next.js Static Site Generator</span>
-    </>
-  ),
-  head: (
-    <>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="WOLFX: the next docs builder" />
-      <meta name="og:title" content="WOLFX: the next docs builder" />
-    </>
-  ),
-  primaryHue: {
-    dark: 204,
-    light: 212
-  }
-}
-```
+    Click the "+ Add Workflow" button in the top right corner of the dashboard. Name it whatever you like.
 
-<Callout>
-  More configuration options for the docs theme can be found
-  [here](/themes/docs/configuration).
-</Callout>
+    - Add a step
 
-### You are good to go! Run `next dev` to start
+    To send a notification, a workflow requires at least one **provider step**. To add these steps, you can drag and drop them from the right-hand side onto the canvas.
 
+    - Trigger your workflow
+
+    Now, you'll trigger your workflow to notify a set of users.
+    When triggering workflows, you need to provide the following required pieces of data in your call to the Wolfx API:
+     - target: the user to notify.
+     - workflowId: Id of workflow.
+     - data: The variable data that will populate your notification templates.
+
+    URL trigger flow: https://flow.wolfx.app/wolf/v1/trigger/
+
+    ### Go deeper [^3]
+    
+    This was a simple overview to send your first notification with Wolfx.
+    Read on to see how Wolfx can drive your notification needs, no matter their complexity.
+
+    - [Learn about Wolfx's core data concepts](#)
+
+    - [Learn how to set up a real-time, in-app notification feed in minutes](#)
 </Steps>
 
 ---
-
-<span id="sidebar-and-anchor-links" />
-<Callout>
-  Any `.md` or `.mdx` file will turn into a doc page and be displayed in
-  sidebar. You can also create a `meta.json` file to customize the page order
-  and title. <br /> Check the source code: https://github.com/shuding/nextra for
-  more information.
-</Callout>
-
-<Callout>
-You can also use [`<style jsx>`](https://nextjs.org/docs/basic-features/built-in-css-support#css-in-js) to style elements inside `theme.config.js`.
-</Callout>
-
-[^1]: Install Next.js, WOLFX and React.
-[^2]: Install the docs theme.
-[^3]: To start.

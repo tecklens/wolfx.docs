@@ -1,0 +1,8 @@
+{
+  "workflow": "Workflow",
+  "provider": "Provider",
+  "environment": "Environment",
+  "variable": "Variable",
+  "message": "Message",
+  "conditional": "Conditional"
+}
