@@ -1,165 +1,56 @@
-# MDX
+import {Callout} from 'nextra/components'
 
-With Nextra, all your `.md` and `.mdx` files under the pages directory will be
-rendered with [MDX](https://mdxjs.com/about), it's an advanced Markdown format
-with React component support.
+# Workflows
 
-You can use import and use React components inside your Markdown files like
-this:
+Here you learn all about workflows
 
-```mdx filename="example.mdx"
-import { Callout } from 'nextra/components'
+In the Wolfx system, all notifications must be sent through a workflow. Each workflow contains various logic and steps (nodes) for the notifications to be sent to your users.
 
-**Markdown With React Components**
+Workflows in Wolfx:
+- Always have a unique `key` associated
+- Are always executed for a single recipient at a time
+- Contain all of the logic and templates for the notifications you send
+- Can have recipient preferences attached
+- Can be triggered via the API, an event, or on a schedule for a recipient
 
-<Callout emoji="✅">
-  **MDX** (the library), at its core, transforms MDX (the syntax) to JSX. It
-  receives an MDX string and outputs a _JSX string_. It does this by parsing the
-  MDX document to a syntax tree and then generates a JSX document from that
-  tree.
+## Structure
+
+Workflows serve as a detailed design for a message sending process within your system. They encapsulate the entire message flow and messaging rules. Here's where all the channels, filters, conditions, and actions are bundled into one singular entity.
+
+<img style={{borderRadius: '0.5rem'}} src="/images/workflow-mental-model.png"/>
+
+### Workflow Channels
+
+Channels are categorized into various types, each of which is linked with at least one corresponding provider that can be tailored as needed:
+
+- **Email** (examples include Sendgrid, Postmark)
+- **In-App** (such as feeds, toasts, banners)
+- **Push** (such as APNS, FCM)
+- **SMS** (examples include Twilio, Telnyx)
+- **Chat** (such as Slack, Microsoft Teams, and Discord)
+- **Webhook** (used to send webhooks to custom channels or enable your customers to configure webhooks within your product)
+
+### Running workflows
+
+Workflows defined in Wolfx are executed via 'trigger', which starts a workflow run for the recipients specified using the `targets` passed to the workflow trigger.
+
+<Callout emoji="💡">
+  Note: The execution process of a job always involves a single recipient. The number of requests per
+  month is calculated for each recipient. A workflow can send out to multiple recipients at the same time, with
+  the number of requests in a month based on your budget. You will subtract the number of recipients from your
+  budget.
 </Callout>
-```
 
-Generates:
+### Variables in workflow
 
-import { Callout } from 'nextra/components'
+Variables in a workflow are defined to be used as templates for sending users. Variables are defined with keys, and their values are retrieved from default values of the workflow or overridden from the `overrides` field in the API trigger.
 
-<div className="p-4 border border-gray-200 dark:border-gray-900 rounded mt-6">
-**Markdown With React Components**
+<img style={{borderRadius: '0.5rem'}} src="/images/workflow-mental-model.png"/>
 
-<Callout emoji="✅">
-  **MDX** (the library), at its core, transforms MDX (the syntax) to JSX. It
-  receives an MDX string and outputs a _JSX string_. It does this by parsing the
-  MDX document to a syntax tree and then generates a JSX document from that
-  tree.
-</Callout>
-</div>
+#### Triggering a workflow
+In Wolfx, workflows can be triggered in two different ways::
 
-## Heading
+- **API call**: workflows can be triggered directly via an API call to our workflow trigger endpoint. This is the most common form of integration and means that Wolfx is integrated into your backend codebase, usually alongside your application logic.
+- **Schedules**: workflows can be scheduled to be run for one or more recipients, in a recipient's local timezone on a one-off, or recurring basis.
 
-<br />
-
-# **Hello**, This Is a _Title_ Inside `h1`
-
-<h2>**Hello**, This Is a _Title_ Inside `h2`</h2>
-{/* using html tag to avoid being rendered in the sidebar */}
-
-### **Hello**, This Is a _Title_ Inside `h3`
-
-#### **Hello**, This Is a _Title_ Inside `h4`
-
-##### **Hello**, This Is a _Title_ Inside `h5`
-
-###### **Hello**, This Is a _Title_ Inside `h6`
-
-## List
-
-1. one
-2. two
-3. three
-
-- one
-- two
-- three
-
-## Task List
-
-```mdx
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-```
-
-Renders
-
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-
-## Syntax Highlighting
-
-Automatic syntax highlighting
-
-````mdx
-```js
-console.log('hello, world')
-```
-````
-
-Renders:
-
-```js
-console.log('hello, world')
-```
-
-You can also add the `{line|range}` modifier to highlight specific lines:
-
-````mdx
-```jsx {4,6-8}
-import useSWR from 'swr'
-
-function Profile() {
-  const { data, error } = useSWR('/api/user', fetcher)
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-  return <div>hello {data.name}!</div>
-}
-```
-````
-
-```jsx {4,6-8}
-import useSWR from 'swr'
-
-function Profile() {
-  const { data, error } = useSWR('/api/user', fetcher)
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-  return <div>hello {data.name}!</div>
-}
-```
-
-## Inline Code
-
-You can use \`content\` to wrap inline code content like: `let x = 1`.
-
-## Blockquote
-
-> Where some people measure progress in answers-right per test or tests-passed
-> per year, we are more interested in Sistine-Chapel-Ceilings per Lifetime.
->
-> — Alan Kay, A Personal Computer for Children of All Ages
-
-Nested quotes:
-
-> > Where some people measure progress in answers-right per test or tests-passed
-> > per year, we are more interested in Sistine-Chapel-Ceilings per Lifetime.
-> >
-> > — Alan Kay, A Personal Computer for Children of All Ages
->
-> This is **great**.
->
-> — Shu Ding.
-
-## Table
-
-| Syntax        | Description |   Test Text |
-| :------------ | :---------: | ----------: |
-| Header        |    Title    | Here's this |
-| Paragraph     |    Text     |    And more |
-| Strikethrough |             |    ~~Text~~ |
-
-## React Components
-
-React components and Markdown can be **mixed together**, for instance:
-
-```mdx
-<Callout>Give [**Nextra**](https://github.com/tecklens) a star!</Callout>
-```
-
-Renders:
-
-> <Callout>
->   Give [**WOLFX**](https://github.com/tecklens) a star!
-> </Callout>
+## FAQ
