@@ -1,3 +1,6 @@
 {
-  "providers": "Providers"
+  "chat": "Chat",
+  "mail": "Mail",
+  "sms": "SMS",
+  "push": "Push"
 }
