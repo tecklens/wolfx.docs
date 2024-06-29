@@ -1,3 +1,5 @@
+import {Tab, Tabs} from "nextra/components";
+
 ---
 title: 'Mailersend'
 description: 'Learn how to use the MailerSend provider to send email notifications using Wolfx'
@@ -23,14 +25,14 @@ To use the MailerSend provider in the email channel, you will need to create a M
 
 Wolfx has its own email editor for writing email template. If you want to use pre made template from MailerSend, you can use `customData` filed of email overrides to send template details. Make sure your `Api Key` has enough permission to read and process the template.
 
-<Tabs>
-  <Tab title="Node.js">
+<Tabs items={['Node.js', 'cURL']}>
+  <Tab>
     ```jsx
     import {
     Wolfx
   } from '@novu/node';
 
-    const novu = new Wolfx('<NOVU_API_KEY>');
+    const novu = new Wolfx('<WOLFX_API_KEY>');
 
     await novu.subscribers.trigger("workflowIdentifier", {
       to: "subscriberId",
@@ -79,12 +81,12 @@ Wolfx has its own email editor for writing email template. If you want to use pr
     });
     ```
   </Tab>
-  <Tab title="cURL">
+  <Tab>
     ```bash
     curl --location 'https://api.novu.co/v1/events/trigger' \
     --header 'Content-Type: application/json' \
     --header 'Accept: application/json' \
-    --header 'Authorization: ApiKey <NOVU_API_KEY>' \
+    --header 'Authorization: ApiKey <WOLFX_API_KEY>' \
     --data '{
       "name": "workflowIdentifier",
       "to":  ["subscriberId"],

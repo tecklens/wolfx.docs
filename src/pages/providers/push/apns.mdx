@@ -1,8 +1,6 @@
----
-title: 'Apple Push Notification Service (APNS)'
-sidebarTitle: 'APNS'
-description: 'Learn how to use the Apple Push Notification Service (APNS) provider to send push notifications using Novu'
----
+import {
+    Tab, Tabs
+} from "nextra/components";
 
 [Apple Push Notification Service](https://docs.expo.dev/push-notifications/overview/), as the name suggests, is a notification delivery service provided by Apple.
 
@@ -27,9 +25,9 @@ You also need the following to connect to APNs:
 The overrides field supports all [Notification payload](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification?language=objc) values, as shown below:
 
 ```jsx
-import { Novu } from '@novu/node';
+import { Wolfx } from '@novu/node';
 
-const novu = new Novu("<NOVU_API_KEY>");
+const novu = new Wolfx("<WOLFX_API_KEY>");
 
 novu.trigger('<WORKFLOW_TRIGGER_IDENTIFIER>', {
   to: {
@@ -57,9 +55,9 @@ novu.trigger('<WORKFLOW_TRIGGER_IDENTIFIER>', {
 ```
 
 ```jsx
-import { Novu } from '@novu/node';
+import { Wolfx } from '@novu/node';
 
-const novu = new Novu("<NOVU_API_KEY>");
+const novu = new Wolfx("<WOLFX_API_KEY>");
 
 novu.trigger('<WORKFLOW_TRIGGER_IDENTIFIER>', {
   to: {
@@ -91,27 +89,27 @@ novu.trigger('<WORKFLOW_TRIGGER_IDENTIFIER>', {
 
 Before triggering the notification to a subscriber(user) with push as a step in the workflow, make sure you have added the subscriber's device token as follows:
 
-<Tabs>
-    <Tab title="Node.js">
+<Tabs items={['Node.js', 'cURL']}>
+    <Tab>
         ```javaScript
         import {
-        Novu,
+        Wolfx,
         ChatProviderIdEnum
     } from '@novu/node';
 
-        const novu = new Novu("<NOVU_API_KEY>");
+        const novu = new Wolfx("<WOLFX_API_KEY>");
 
         await novu.subscribers.setCredentials('subscriberId', PushProviderIdEnum.APNS, {
             deviceTokens: ['token1', 'token2'],
         });
         ```
     </Tab>
-    <Tab title="cURL">
+    <Tab>
         ```bash
         curl -L -X PUT 'https://api.novu.co/v1/subscribers/<SUBSCRIBER_ID>/credentials' \
         -H 'Content-Type: application/json' \
         -H 'Accept: application/json' \
-        -H 'Authorization: ApiKey <NOVU_API_KEY>' \
+        -H 'Authorization: ApiKey <WOLFX_API_KEY>' \
             -d '{
                 "providerId": "apns",
                 "deviceTokens": ["token1", "token2"],

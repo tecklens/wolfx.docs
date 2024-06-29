@@ -1,7 +1,6 @@
----
-title: 'Pushpad'
-description: 'Learn how to use the Pushpad provider to send web push notifications using Novu'
----
+import {
+    Tab, Tabs
+} from "nextra/components";
 
 [Pushpad](https://pushpad.xyz) is a web push service that supports sending notifications to all major browsers (Chrome, Firefox, Edge, Safari, etc.) via FCM, Mozilla autopush, Windows Push Notification Services and Apple Push Notification service, with just one simple API.
 
@@ -13,19 +12,19 @@ Once Pushpad has been configured with your credentials and the Pushpad SDK has b
 
 This identifier (`uid` or `user ID`) allows targeting a specific browser when sending push notifications.
 
-In order to target the Pushpad user from Novu, you must register the Pushpad `uid` as the `deviceToken` for your Novu subscriber. For example, if you invoked the [Pushpad JavaScript SDK](https://pushpad.xyz/docs/javascript_sdk_reference) with `pushpad('uid', 'user123')`, then `user123` is the user ID for that browser.
+In order to target the Pushpad user from Wolfx, you must register the Pushpad `uid` as the `deviceToken` for your Wolfx subscriber. For example, if you invoked the [Pushpad JavaScript SDK](https://pushpad.xyz/docs/javascript_sdk_reference) with `pushpad('uid', 'user123')`, then `user123` is the user ID for that browser.
 
-Once you have the `uid` value, the `deviceToken` for your Novu subscriber can be set using this code:
+Once you have the `uid` value, the `deviceToken` for your Wolfx subscriber can be set using this code:
 
-<Tabs>
-    <Tab title="Node.js">
+<Tabs items={['Node.js', 'cURL']}>
+    <Tab>
         ```javaScript
         import {
-        Novu,
+        Wolfx,
         ChatProviderIdEnum
     } from '@novu/node';
 
-        const novu = new Novu("<NOVU_API_KEY>");
+        const novu = new Wolfx("<WOLFX_API_KEY>");
 
         await novu.subscribers.setCredentials('subscriberId', PushProviderIdEnum.Pushpad, {
             // the user ID (uid) that you used for Pushpad
@@ -33,12 +32,12 @@ Once you have the `uid` value, the `deviceToken` for your Novu subscriber can be
         });
         ```
     </Tab>
-    <Tab title="cURL">
+    <Tab>
         ```bash
         curl -L -X PUT 'https://api.novu.co/v1/subscribers/<SUBSCRIBER_ID>/credentials' \
         -H 'Content-Type: application/json' \
         -H 'Accept: application/json' \
-        -H 'Authorization: ApiKey <NOVU_API_KEY>' \
+        -H 'Authorization: ApiKey <WOLFX_API_KEY>' \
             -d '{
                 "providerId": "pushpad",
                 "deviceTokens": ['user123'],
@@ -53,9 +52,9 @@ Checkout the [API reference](/api-reference/subscribers/update-subscriber-creden
 # SDK Trigger Example
 
 ```jsx
-import { Novu } from '@novu/node';
+import { Wolfx } from '@novu/node';
 
-const novu = new Novu("<NOVU_API_KEY>");
+const novu = new Wolfx("<WOLFX_API_KEY>");
 
 novu.trigger('<WORKFLOW_TRIGGER_IDENTIFIER>', {
   to: {
