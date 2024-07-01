@@ -20,8 +20,30 @@ For instance, in the code example the variables username and resetLink are data 
 |-----------|--------|----------|--------------------------------------------------|
 | firstName | String | O        | The first name of the subscriber.                |
 | lastName  | String | O        | The last name of the subscriber.                 |
-| email     | String | O        | The subscriber's email address.                  |
-| phone     | String | O        | The phone number associated with the subscriber. |
+| email     | String | X        | The subscriber's email address.                  |
+| phone     | String | X        | The phone number associated with the subscriber. |
 
 ### Brand Variables
 
+| Variable | Type   | Required | Description                                                                  |
+|----------|--------|----------|------------------------------------------------------------------------------|
+| branding | Object | X        | Enables customization of the notification's visual identity.                 |
+| logo     | String | X        | Insert the brand logo.                                                       |
+| color    | String | X        | 	Set the primary color of the notification based on the brand configuration. |
+
+### Data Payload Variables
+
+Data payload variables encompass the dynamic data intended to be injected into the content of a workflow.
+These variables are integral components of the payload object, forming part of the parameters for the trigger function.
+
+Here's a more illustrative example of how data payload variables can be employed:
+
+```cURL
+
+```
+
+Within this code snippet, the variables title and job_code are representative of data payload variables.
+
+Importantly, it's worth noting that the payload itself can encompass any serializable JSON object.
+
+Avoid use of system reserved variables as normal variables. For example don't use email as variable name because {{job_code}} is a system reserved variable
