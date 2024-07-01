@@ -1,36 +1,27 @@
-# Next.js Image
+# Variables
 
-You can use
-[Next.js Image](https://nextjs.org/docs/basic-features/image-optimization)
-directly in MDX.
+Wolfx's content creation tools allow developers to utilize a wealth of variables when designing notification workflows.
 
-If the `demo.png` file is located at `/public/demo.png`, you can use the code
-below to display it:
+As developers construct workflows using Wolfx, certain status facets—results of batch functions and other steps in the workflow - are auto-generated and can be utilized to control the content displayed in notification templates.
 
-```mdx
-import Image from 'next/image'
+These variables offer dynamic and automated properties that hold subscriber information, such as first and last name, email, phone, and avatar.
 
-<Image src="/demo.png" alt="Hello" width={500} height={500} />
-```
+For example, developers can insert a subscriber's first name into a workflow by using `{{firstName}}`.
 
-## Static Image
+In addition to the subscriber's details, developers can use data payload variables that encapsulate dynamic data meant to be injected into the content of a workflow.
 
-import { Callout } from 'nextra/components'
+For instance, in the code example the variables username and resetLink are data payload variables that would be adjusted based on the workflow's purpose.
 
-<Callout type="warning">
-  You need to opt-in to this feature by enabling [`staticImage:
-  true`](/get-started#create-manually).
-</Callout>
+## System Variables
 
-Nextra also supports automatic static image imports, you no longer need to
-specify the width and height of the image manually, and you can directly use the
-Markdown syntax to display the same image:
+### Workflow Default Variables
 
-```md
-![Hello](/demo.png)
-```
+| Variable  | Type   | Required | Description                                      |
+|-----------|--------|----------|--------------------------------------------------|
+| firstName | String | O        | The first name of the subscriber.                |
+| lastName  | String | O        | The last name of the subscriber.                 |
+| email     | String | O        | The subscriber's email address.                  |
+| phone     | String | O        | The phone number associated with the subscriber. |
 
-With Next.js Image, there will be no layout shift, and a beautiful blury
-placeholder will be shown by default when loading the images:
+### Brand Variables
 
-![WOLFX](/og.png)
