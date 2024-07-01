@@ -1,51 +1,34 @@
-import { Callout } from 'nextra/components'
+# Environments
 
-# Next.js I18n
+Wolfx runs all your requests in the context of an environment.
+By default, Wolfx creates two environments when your account was just created, development and production.
 
-<Callout type="warning">
-  This feature is only available in the docs theme.
-</Callout>
+## Development environment
 
-Wolfx supports
-[Next.js Internationalized Routing](https://nextjs.org/docs/advanced-features/i18n-routing)
-out of the box.
+The development environment is used for testing purposes and validating notification changes prior to committing them to the production environment.
 
-To add multi-language pages to your Nextra application, just need to config
-`i18n` in `next.config.js`:
+## Production environment
 
-```js filename="next.config.js"
-const withNextra = require('nextra')('nextra-theme-docs', './theme.config.js')
+It will be your live/production environment, you cannot make changes to this environment directly.
+You will first have to make the changes in the development environment and then promote it to production.
+This is a read-only environment.
 
-module.exports = withNextra({
-  i18n: {
-    locales: ['en', 'zh', 'de'],
-    defaultLocale: 'en'
-  }
-})
-```
+## Data associated with environments
 
-Then, add the locale codes to your file extensions (required for the default
-locale too):
+Wolfx will separate most of the data associated with your account based on the current accessed environment.
 
-```text
-/pages
-  index.en.md
-  index.zh.md
-  index.de.md
-  meta.en.json
-  meta.zh.json
-  meta.de.json
-  ...
-```
+- Subscribers
+- Workflows
+- Execution logs
+- Connected providers
 
-Finally, add the `i18n` option to your `theme.config.js` to configure the
-language dropdown:
+Each environment will be accessed using a separate credential set:
 
-```jsx filename="theme.config.js"
-i18n: [
-  { locale: 'en', text: 'English' },
-  { locale: 'zh', text: '中文' },
-  { locale: 'de', text: 'Deutsch' },
-  { locale: 'ar', text: 'العربية', direction: 'rtl' }
-]
-```
+- **Application Identifier** - This is a public identifier used in client-side applications to identify your application.
+It is unique to an environment in an organization and is different from Provider Identifier.
+
+- **API Secret Key** - A secret key used when communicating with the Wolfx API from your backend services.
+
+We suggest configuring these key sets based on your active environment, the same as you would use to manage different service credentials and serve them based on the current environment in which your code is deployed.
+
+
