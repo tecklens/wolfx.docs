@@ -1,0 +1,24 @@
+import CardEndpoint from "../../../components/CardEndpoint";
+import Row from "../../../components/grid/Row";
+import Column from "../../../components/grid/Column";
+import Variables from "../../../components/Variables";
+import Space from "../../../components/grid/Space";
+import CodeExample from "../../../components/CodeExample";
+
+# Trigger One Event
+<Row>
+  <Column>
+    <Variables variables={[
+      {
+        name: 'object',
+        type: 'string',
+        description: 'A string describing the object type returned'
+      }
+    ]} />
+  </Column>
+  <Space />
+  <Column>
+    <CardEndpoint url={'/v1/trigger'} method={'POST'}/>
+    <CodeExample code={`CallApiRestfull<String, String> restful = new CallApiRestfull<>();`}/>
+  </Column>
+</Row>

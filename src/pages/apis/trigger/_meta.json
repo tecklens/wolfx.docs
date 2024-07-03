@@ -1,0 +1,3 @@
+{
+  "trigger-event": "POST /v1/trigger/create"
+}

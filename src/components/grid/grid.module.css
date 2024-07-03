@@ -1,0 +1,26 @@
+.row {
+    flex-direction: row;
+    display: flex;
+}
+
+.col {
+    flex: 1;
+}
+
+.space {
+    width: 16px;
+}
+
+@media screen and (max-width: 992px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col {
+        flex: auto;
+    }
+
+    .space {
+        width: 0;
+    }
+}
