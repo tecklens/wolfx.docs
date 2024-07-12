@@ -1,16 +1,25 @@
-# Themes
+# Messages
+Learn how Wolfx models per-recipient notifications with Messages.
 
-Nextra itself is basically a plugin that normalizes your Markdown routes in
-Next.js into structural data, and it doesn't handle any styling related thing. A
-**theme** is what renders your actual pages, it works like a layout component in
-React.
+## An overview
 
-Nextra has 2 official themes that you can use:
+A Message in Wolfx represents a notification delivered to a User or a subscriptions of Channel.
+This is the core Wolfx data entity that your recipients will interact with when receiving notifications.
 
-- [Docs Theme](/themes/docs)
-- [Blog Theme](/themes/blog)
+Wolfx exposes a list of APIs, through which you can query notifications and update messages individually or in batches.
 
-You can also extend your own themes. Here's a great starter example by
-[@jaredpalmer](https://github.com/jaredpalmer):
+The Wolfx Dashboard makes available various message metadata to help you debug your notifications. This includes:
 
-- [Nextra Blank Custom Theme/Boilerplate Example](https://github.com/jaredpalmer/nextra-blank-custom-theme)
+- Information about the request that triggered the delivery of the message.
+- A preview of the message content as displayed for the recipient.
+- Logs of the request between Wolfx and your channel provider as Wolfx works to deliver the message to the recipient.
+- A timeline of message lifecycle.
+
+## Statuses
+
+
+Each message sent through each channel provider is recorded as a 'Task'. Each task has the following status:
+
+- In process: message during sending
+- Done: Complete the message sending process
+- Canceled: Sending a message failed, you can review the error log when sending a message in this state
