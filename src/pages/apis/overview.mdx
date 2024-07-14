@@ -1,4 +1,45 @@
-# API Overview
+import {Bleed} from "nextra-theme-docs";
+import Frame from "../../components/Frame";
+import Row from "../../components/grid/Row";
+import Column from "../../components/grid/Column";
+import Space from "../../components/grid/Space";
+import CardEndpoint from "../../components/CardEndpoint";
+import CodeExample from "../../components/CodeExample";
 
 In this page you can learn about how to work with Wolfx's API
 
+The Wolfx API is organized around [REST](https://en.wikipedia.org/wiki/REST). Our API has predictable resource-oriented URLs,
+accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+<br/>
+<CardEndpoint url={'https://flow.wolfx.app/wolf/v1'} method={'POST'} title={'Base URL'}/>
+
+## API keys
+
+Wolfx authenticates your API requests using your account's API keys.
+API requests made without authentication or using an incorrect key will return a 401 error.
+Requests using a valid key but with insufficient permissions will return a 403 error.
+
+You can view and manage your API keys in the Settings.
+
+<Frame caption="Api Key in Setting Screen"><img src="/images/api-key-demo.png"/> </Frame>
+
+## Authentication
+
+<Row>
+    <Column>
+        You must pass your API key to Wolfx as a Bearer token using the `Authorization` header.
+
+    </Column>
+    <Space/>
+    <Column>
+        <CodeExample code={`Authorization: Bearer xxxxx`} title={'Authentication header'}/>
+    </Column>
+</Row>
+
+## Errors
+
+Wolfx uses standard HTTP response codes to indicate the success or failure of your API requests.
+
+- `2xx` success status codes confirm that your request worked as expected.
+- `4xx` error status codes indicate an error caused by incorrect or missing request information (e.g. providing an incorrect API key).
+- `5xx` error status codes indicate a Wolfx server error.

@@ -1,0 +1,26 @@
+import {Callout} from "nextra/components";
+import Row from "../../components/grid/Row";
+import Column from "../../components/grid/Column";
+import Space from "../../components/grid/Space";
+import RateLimiting from "../../components/RateLimiting";
+
+# Rate Limiting
+
+---
+
+<Row>
+    <Column>
+        Each endpoint in the Wolfx API is rate limited. Wolfx uses a tier system to determine the rate limit scale for
+        each endpoint.
+        When your request has been rate limited, the Wolfx API will return a **`429 Too Many Requests`** error in response.
+
+        <Callout>
+            **Concerned about exceeding a Wolfx rate limit?** Contact us and we can help figure out a usage rate that's
+            right for your specific needs.
+        </Callout>
+    </Column>
+    <Space/>
+    <Column>
+        <RateLimiting />
+    </Column>
+</Row>
