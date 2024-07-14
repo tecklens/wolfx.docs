@@ -1,0 +1,55 @@
+import {Tab, Tabs} from "nextra/components";
+import YouTube from "../../../components/YouTube";
+
+# Telegram
+
+Learn about how to use Discord provider for chat notifications
+
+---
+
+- **Source**: https://telegram.org/
+- **Icon Support**: Yes
+- **Message Format**: Text
+- **Message Limit**: 4096 Characters per message
+
+## Account Setup
+
+
+The deployment of Telegram will be a bit more complicated compared to other chat services.
+Here is a brief description/guide to help you deploy Telegram with Wolfx.
+
+First, you need to have an account.
+Telegram will use your phone number as authentication to allow you to log in to your account.
+Therefore, download and install the app on your phone through [Android](https://play.google.com/store/apps/details?id=org.telegram.messenger) or [Apple](https://apps.apple.com/vn/app/telegram-messenger/id686449807).
+
+After installing and creating an account, you can use the [web](https://web.telegram.org/) version for easier setup. This is optional.
+
+## Bot setup
+
+When working with Telegram notifications, you must create a bot.
+Only after completing this can you obtain the **bot_token**, which is crucial for Wolfx to connect to Telegram.
+
+To do this you will have to open a communication (inside Telegram) to the [BotFather](https://botsfortelegram.com/project/the-bot-father/).
+He is available to all users signed up to the platform. Once you've got a dialog box open to him:
+
+- Type: /newbot
+- Answer the questions it asks after doing this (which get the name of it, etc).
+- When you've completed step 2, you will be provided a bot_token that looks something like this: 7368449090:AAEgluXjMhayx6kLzm7Z9I1q8bq1xxxxxxx.
+- Type /start now in the same dialog box to enable and instantiate your brand new bot.
+
+This process only needs to be done once. When you receive the **bot_token**, keep it safe and you won't have to worry about repeating this process again.
+Through this bot, Wolfx can send notifications to different users (in multiple chat threads) on Telegram.
+
+## Get ChatId
+
+To obtain the chat ID, you must first add the bot to your chat.
+
+Follow video:
+
+<YouTube id="eT_cz3tYD54"/>
+
+Then you can get the **chat_id** by pasting the following URL into Chrome.
+
+```shell
+https://api.telegram.org/bot<bot_token>/getUpdates
+```
