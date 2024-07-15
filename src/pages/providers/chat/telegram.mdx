@@ -1,5 +1,5 @@
-import {Tab, Tabs} from "nextra/components";
 import YouTube from "../../../components/YouTube";
+import CodeExample from "../../../components/CodeExample";
 
 # Telegram
 
@@ -53,3 +53,81 @@ Then you can get the **chat_id** by pasting the following URL into Chrome.
 ```shell
 https://api.telegram.org/bot<bot_token>/getUpdates
 ```
+
+You will get the following results.
+
+```json
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": "xxx",
+      "message": {
+        "message_id": 17,
+        "from": {
+          "id": "1025146xxx",
+          "is_bot": false,
+          "first_name": "Tran",
+          "last_name": "Diep",
+          "username": "techlenstv",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -4269784111,
+          "title": "WOLF NOTIFICATIONS",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "date": 1721048111,
+        "text": "/getid",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 894722111,
+      "message": {
+        "message_id": 18,
+        "from": {
+          "id": 1025141111,
+          "is_bot": false,
+          "first_name": "Tran",
+          "last_name": "Diep",
+          "username": "techlenstv",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -4269781111,
+          "title": "WOLF NOTIFICATIONS",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "date": 1721041111,
+        "text": "/getgroupid",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 11,
+            "type": "text_link",
+            "url": "tg://bot_command?command=getgroupid"
+          },
+          {
+            "offset": 0,
+            "length": 11,
+            "type": "underline"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+Get the chat_id and bot_token, then create the Telegram integration provider [here](https://dash.wolfx.app/provider?open_provider=telegram).
+
+

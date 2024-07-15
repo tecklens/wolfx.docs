@@ -1,3 +1,5 @@
 {
-  "trigger-event": "POST /v1/trigger/create"
+  "trigger-event": "POST /v1/trigger/",
+  "trigger-bulk-event": "POST /v1/trigger/bulk/",
+  "cancel-trigger": "DEL /v1/trigger/"
 }

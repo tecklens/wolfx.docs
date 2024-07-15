@@ -1,0 +1,8 @@
+
+.response pre {
+    margin: 0;
+}
+
+.response :global(.nextra-code-block) {
+    margin: 0 !important;
+}
