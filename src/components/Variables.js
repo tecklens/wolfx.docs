@@ -6,8 +6,8 @@ export default function Variables({variables}) {
                     <div className={'nx-flex nx-flex-col nx-gap-2'} key={e.name} id={`variables_${e.name}`}>
                         <div className={'nx-flex nx-flex-col nx-border-b nx-py-2'}>
                             <div className={'nx-flex'}>
-                                <div className={'nx-flex nx-items-center nx-text-gray-600 nx-gap-2'}>
-                                    <div className={'nx-mr-2 nx-text-gray-900 nx-font-bold'}>{e.name}</div>
+                                <div className={'nx-flex nx-items-center nx-text-gray-600 dark:nx-text-gray-300 nx-gap-2'}>
+                                    <div className={'nx-mr-2 nx-text-gray-900 dark:nx-text-white nx-font-bold'}>{e.name}</div>
                                     <div className={'nx-text-xs'}>{e.type}</div>
                                     {e.required ?
                                         <div className={'nx-text-xs nx-rounded nx-px-2 nx-font-bold'}
