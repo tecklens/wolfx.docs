@@ -1,0 +1,75 @@
+import {Callout} from "nextra/components";
+import Variables from "../../components/Variables";
+
+# Subscriber
+---
+In Wolfx, we call the entities designed to receive notifications as `Subscribers`.
+Each subscriber is unique and identified by a unique subscriberId.
+
+<Callout>
+  We recommend using the internal unique id your application uses for a specific user as the `subscriberId`.
+</Callout>
+
+Each subscriber has the following data points:
+- **User Data**: Data stored in the subscriber object that you can easily access in your workflow. This contains basic info such as first name, last name, avatar, locale,
+email and phone. This data is fixed and structured.
+- **Custom Data**: Apart from the above fixed structured user data, any unstructured custom data such as user's address, nationality, height,... can also be stored
+ in the `target` field using key-value pairs.
+
+## Subscriber attributes
+
+<Variables variables={[
+  {
+    name: 'subscriberId',
+    type: 'string',
+    required: true,
+    description: 'Ex: 961c8859-bca9-49d3-9443-233c5888286c'
+  },
+  {
+    name: 'firstName',
+    type: 'string',
+    required: false,
+    description: 'Ex: John',
+  },
+  {
+    name: 'lastName',
+    type: 'string',
+    required: false,
+    description: 'Ex: Doe'
+  },
+  {
+    name: 'email',
+    type: 'string',
+    required: true,
+    description: 'Ex: support@wolfx.app'
+  },
+  {
+    name: 'phone',
+    type: 'string',
+    required: false,
+    description: 'Ex: +84339210xxx'
+  },
+  {
+    name: 'avatar',
+    type: 'string',
+    required: false,
+    description: 'Ex: https://example.com/images/avatar.jpg'
+  },
+  {
+    name: 'target',
+    type: 'object',
+    required: false,
+    description: '{"key": "value"}'
+  },
+]}/>
+
+## Create a subscriber
+
+We support creating new subscriber using [API](https://docs.wolfx.app/apis/subscription/create-subscriber).
+
+```shell
+```
+
+## Bulk Subscriber Creation
+
+You can create subscribers in bulk (up to 500 at once) via the [API](https://docs.wolfx.app/apis/subscription/create-bulk-subscriber)
