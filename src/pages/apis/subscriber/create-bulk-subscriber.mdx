@@ -1,0 +1,96 @@
+import CardEndpoint from "../../../components/CardEndpoint";
+import Row from "../../../components/grid/Row";
+import Column from "../../../components/grid/Column";
+import Variables from "../../../components/Variables";
+import Space from "../../../components/grid/Space";
+import ResponseJson from "../../../components/ResponseJson";
+
+# Create Bulk Subscriber
+
+Create multiple subcribers at once, in the Wolf platform. The subscriber will be later used to receive notifications.
+The bulk API is limited to **500 subscribers per request**.
+
+---
+
+<Row>
+  <Column>
+    <Variables variables={[
+      {
+        name: 'channelIdentifier',
+        type: 'string',
+        required: true,
+        description: 'The ID of the Workflow you created.'
+      },
+      {
+        name: 'channelName',
+        type: 'string',
+        required: true,
+        description: 'The ID of the Workflow you created.'
+      },
+      {
+        name: 'channelDescription',
+        type: 'string',
+        required: false,
+        description: 'Override the variables we predefined.'
+      },
+      {
+        name: 'targets',
+        type: 'object[]',
+        required: true,
+        description: 'Information of the message recipient.',
+        children: [
+          {
+            name: 'subcriberId',
+            type: 'string',
+            required: true,
+            description: 'We will create a subscriber with the ID you provide.'
+          },
+          {
+            name: 'phone',
+            type: 'string',
+            required: true,
+            description: ''
+          },
+          {
+            name: 'email',
+            type: 'string',
+            required: true,
+            description: ''
+          },
+          {
+            name: '...variables',
+            type: 'any[]',
+            required: false,
+            description: 'The variables you self-define in the workflow.'
+          },
+        ]
+      },
+    ]}/>
+  </Column>
+  <Space/>
+  <Column>
+    <CardEndpoint url={'/v1/trigger'} method={'POST'}/>
+    <ResponseJson title={'REQUEST'} status={null}>
+      ```json
+      {
+        "workflowId": "string",
+        "data": {},
+        "target": {
+        "subcriberId": "string",
+        "phone": "string",
+        "email": "string"
+      },
+        "overrides": {}
+      }
+      ```
+    </ResponseJson>
+    <br />
+    <ResponseJson>
+      ```json
+      {
+        "transactionId": "string"
+      }
+      ```
+    </ResponseJson>
+  </Column>
+</Row>
