@@ -1,0 +1,4 @@
+{
+  "create-subscriber": "POST /sub",
+  "create-bulk-subscriber": "POST /sub/bulk"
+}
