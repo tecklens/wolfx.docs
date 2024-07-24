@@ -11,7 +11,7 @@ export default function RateLimiting() {
             </div>
             <div className={'nx-flex nx-text-sm nx-border-b nx-py-2'}>
                 <div style={{width: 100}}>Pro</div>
-                <div>100 request / second</div>
+                <div>50 request / second</div>
             </div>
             <div className={'nx-flex nx-text-sm nx-border-b nx-py-2'}>
                 <div style={{width: 100}}>Scaler</div>
